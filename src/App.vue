@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <AppNavbar />
+    <AppSidebar />
+    <AppStartBox @budget-created="toggleCategories" /> 
+    <AppCategoriesBox :budgetCreated="showCategories" />
+    <AppRightSidebar />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppNavbar from './components/AppNavbar.vue';
+import AppSidebar from './components/AppSidebar.vue';
+import AppStartBox from './components/AppStartBox.vue';
+import AppCategoriesBox from './components/AppCategoriesBox.vue'; 
+import AppRightSidebar from './components/AppRightSideBar.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    AppNavbar,
+    AppSidebar,
+    AppStartBox, 
+    AppCategoriesBox, 
+    AppRightSidebar
+  },
+  data() {
+    return {
+      showCategories: false,
+      
+    };
+  },
+  methods: {
+    toggleCategories() { 
+      this.showCategories = true;
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
